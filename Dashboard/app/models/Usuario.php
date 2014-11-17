@@ -1,7 +1,7 @@
 <?php
 class Usuario extends Eloquent {
 	protected $table = 'usuarios';
-	protected $fillable = array('correo', 'clave');
+	protected $fillable = array('nombre','apellido1','apellido2','correo', 'clave');
 	protected $guarded  = array('id');
 	public    $timestamps = false;
 

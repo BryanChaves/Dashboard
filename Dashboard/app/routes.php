@@ -12,5 +12,6 @@
 */
 Route::get('/', 'MainController@index');
 Route::get('login', 'MainController@login');
-Route::post('login', 'MainController@verificarLogin');
+Route::post('login', 'UsuarioController@verificarLogin');
 Route::get('registro', 'MainController@registro');
+Route::post('registro', 'UsuarioController@insertarRegistro');

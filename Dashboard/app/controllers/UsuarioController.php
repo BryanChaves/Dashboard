@@ -18,10 +18,17 @@ class UsuarioController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+
+	public function verificarLogin()
 	{
-		//
+		
 	}
+
+	public function insertarRegistro()
+	{
+		
+	}	
+	
 
 
 	/**
