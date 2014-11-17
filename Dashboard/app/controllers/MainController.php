@@ -21,9 +21,9 @@ class MainController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function login()
 	{
-		//
+		$this->layout->content = View::make('login.index');	
 	}
 
 
@@ -32,9 +32,9 @@ class MainController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function registro()
 	{
-		//
+		$this->layout->content = View::make('registro.index');	
 	}
 
 
@@ -44,7 +44,7 @@ class MainController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function verificarLogin($id)
 	{
 		//
 	}

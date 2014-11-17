@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{{HTML::style('assets/css/bootstrap.min.css',array('media'=>'screen'))}}
+	{{HTML::style('assets/css/index.css',array('media'=>'screen'))}}
 </head>
 <body>
 	
