@@ -17,3 +17,23 @@
 	/*width: 600px;
 	height: 250px;*/
 }
+#cerrar{
+	float: right;
+}
+#contenedorPrincipal{
+
+	background-color: red;
+	width: 100%;
+	height: 514px;
+
+}
+.tareas{
+
+	background-color: green;
+	width: 23%;
+	height: 400px;
+	display: inline-block;
+	border: 1px solid;
+	margin-top: 80px;
+	margin-right: 20px;
+}

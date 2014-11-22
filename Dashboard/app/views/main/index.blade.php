@@ -1,5 +1,7 @@
 
-  <div id="botonera" class="btn-group">
+
+
+ <div id="botonera" class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle"
             data-toggle="dropdown">
                     Login
@@ -10,6 +12,7 @@
       <li><a href="registro">Registro</a></li>
     </ul>
   </div>
+
 
 
 

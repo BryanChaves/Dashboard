@@ -10,8 +10,21 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
 Route::get('/', 'MainController@index');
-Route::get('login', 'MainController@login');
-Route::post('login', 'UsuarioController@verificarLogin');
-Route::get('registro', 'MainController@registro');
-Route::post('registro', 'UsuarioController@insertarRegistro');
+//Route::get('/', 'UserController@index');
+Route::get('login', 'UserController@index');
+Route::post('login', 'UserController@login');
+Route::get('registro', 'UserController@create');
+Route::post('registro', 'UserController@store');
+Route::get('logout', 'UserController@logout');
+Route::get('auth', 'UserController@isLogged');
+
+//Route::get('publica', 'HomeController@publica');
+
+Route::group(array('before' => 'auth'), function () {
+	Route::get('tasks', 'TaskController@index');
+	Route::get('create', 'TaskController@create');
+	Route::post('create', 'TaskController@store');
+});
+

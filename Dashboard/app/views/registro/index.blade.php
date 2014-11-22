@@ -1,5 +1,15 @@
 <h1>Registro</h1>
 
+@if ($errors->has())
+    <div class="alert-danger text-center" role="alert">
+        <small>{{ $errors->first('clave') }}</small>
+        <small>{{ $errors->first('confirmacion') }}</small>
+        <small>{{ $errors->first('invalid_credentials') }}</small>
+    </div>
+@endif
+
+
+
 {{ Form::open(array('url' => 'registro')) }}
 	
 	<label for="nombre">Nombre:</label>
@@ -15,7 +25,9 @@
 	{{Form::text('correo', Input::old('correo'), array('placeholder' => 'Correo', 'required' => 'true'))}}
 	<br>
 	<label for="clave">Contraseña:</label>
-	{{ Form::password('clave', array('placeholder' => 'Contraseña', 'class' => 'form-control', 'required' => 'true')) }}
+	{{ Form::password('clave', array('placeholder' => 'Contraseña', 'class' => 'form-control', 'required' => 'true')) }}<br>
+	<label for="clave">Confirmacion:</label>
+	{{ Form::password('confirmacion', array('placeholder' => 'Confirmacion', 'class' => 'form-control', 'required' => 'true')) }}
 	{{ Form::submit('Login', array())}}
 
 {{ Form::close() }}

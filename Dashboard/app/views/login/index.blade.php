@@ -4,8 +4,8 @@
 
 @if ($errors->has())
     <div class="alert-danger text-center" role="alert">
-        <small>{{ $errors->first('email') }}</small>
-        <small>{{ $errors->first('password') }}</small>
+        <small>{{ $errors->first('correo') }}</small>
+        <small>{{ $errors->first('clave') }}</small>
         <small>{{ $errors->first('invalid_credentials') }}</small>
     </div>
 @endif

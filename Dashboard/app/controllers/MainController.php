@@ -21,22 +21,7 @@ class MainController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function login()
-	{
-		$this->layout->content = View::make('login.index');	
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function registro()
-	{
-		$this->layout->content = View::make('registro.index');	
-	}
-
+	
 
 	/**
 	 * Display the specified resource.
@@ -44,10 +29,7 @@ class MainController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function verificarLogin($id)
-	{
-		//
-	}
+	
 
 
 	/**
