@@ -6,16 +6,7 @@ class TaskController extends \BaseController {
 	public function index()
 	{
 		$this->layout->content = View::make('task.index');
-		/*$id = Auth::user()->id;
-	$tareas = Task::tareasUsuario($id);
-		$this->layout->nest(
-			'content',
-			'task.index',
-			array(
-				'tareas' => $tareas
-				
-			)
-		);*/
+	
 	}
 
 
@@ -27,9 +18,15 @@ class TaskController extends \BaseController {
 
 	public function traerTareas()
 	{
-		$id = Auth::user()->id;
-		$tareas = Task::tareasUsuario($id);
-		return Response::Json($tareas);
+
+		if (Auth::check()) {
+			$id = Auth::user()->id;
+			$tareas = Task::tareasUsuario($id);
+			return Response::Json($tareas);
+		}
+
+
+		
 
 	}
 
@@ -79,6 +76,17 @@ class TaskController extends \BaseController {
 		//
 	}
 
+	public function actualizarEstado()
+	{
+		$id=Input::get("id");
+		$status=Input::get("status");
+		$tasks = Task::find($id);
+		$tasks->status = $status;
+		$tasks->save();
+		return Redirect::to('tasks');
+
+	}
+
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -88,7 +96,14 @@ class TaskController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$tarea = Task::find($id);
+		$this->layout->nest(
+			'content',
+			'task.edit',
+			array(
+				'tarea' => $tarea
+			)
+		);
 	}
 
 
@@ -100,7 +115,14 @@ class TaskController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$task = Input::get('task');
+		$description = Input::get('description');
+		
+		$tasks = Task::find($id);
+		$tasks->task = $task;
+		$tasks->description = $description;
+		$tasks->save();
+		return Redirect::to('tasks');
 	}
 
 
@@ -112,7 +134,9 @@ class TaskController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$tasks = Task::find($id);
+		$tasks->delete();
+		return Redirect::to('tasks');
 	}
 
 

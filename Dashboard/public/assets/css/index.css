@@ -37,3 +37,32 @@
 	margin-top: 80px;
 	margin-right: 20px;
 }
+.col-md-3{
+	background-color: #D3D3D3;
+	position: absolute;
+	text-align: center;
+	height: 473px;
+	border: 0.5px solid #999;
+}
+
+.titulos{
+width: 24%;
+text-align: center;
+margin-left: 4px;
+display: inline-block;
+color: black;
+
+
+
+
+
+
+}
+.tareas{
+	border: 0.5px solid #999;
+	background-color: #D3D3D3;
+	width: 80%;
+	height: 50px;
+	margin-top: 10px;
+	text-align: center;
+}

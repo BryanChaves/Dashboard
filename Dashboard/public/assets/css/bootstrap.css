@@ -1456,6 +1456,7 @@ pre code {
 }
 .col-xs-3 {
   width: 25%;
+
 }
 .col-xs-2 {
   width: 16.66666667%;
@@ -1771,6 +1772,9 @@ pre code {
   }
   .col-md-3 {
     width: 25%;
+     background-color: blue;
+    color: red;
+
   }
   .col-md-2 {
     width: 16.66666667%;

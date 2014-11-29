@@ -10,7 +10,7 @@ class Task extends Eloquent
 
 	static public function tareasUsuario($id)
 	{
-		return DB::select("select t.task,t.status,t.description
+		return DB::select("select t.id,t.id_user,t.task,t.status,t.description
 							from tasks t,users u
 							where t.id_user=u.id and u.id=".$id);
 	}

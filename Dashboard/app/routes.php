@@ -24,7 +24,14 @@ Route::get('auth', 'UserController@isLogged');
 
 Route::group(array('before' => 'auth'), function () {
 	Route::get('tasks', 'TaskController@index');
+	Route::get('traer', 'TaskController@traerTareas');
 	Route::get('create', 'TaskController@create');
 	Route::post('create', 'TaskController@store');
+	Route::get('Tasks/{id}/edit', 'TaskController@edit');
+	Route::post('Tasks/{id}/update', 'TaskController@update');
+	Route::get('Tasks/{id}/delete', 'TaskController@destroy');
+	Route::post('Actualizar', 'TaskController@actualizarEstado');
+
+
 });
 
