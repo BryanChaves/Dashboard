@@ -15,6 +15,7 @@ Route::get('/', 'MainController@index');
 //Route::get('/', 'UserController@index');
 Route::get('login', 'UserController@index');
 Route::post('login', 'UserController@login');
+
 Route::get('registro', 'UserController@create');
 Route::post('registro', 'UserController@store');
 Route::get('logout', 'UserController@logout');

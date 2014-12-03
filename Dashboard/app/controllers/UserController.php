@@ -2,22 +2,14 @@
 
 class UserController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */protected $layout = 'layouts.default';
+	protected $layout = 'layouts.default';
+	
 	public function index()
 	{
         $this->layout->nest('content', 'usuario.login');
 	}
 
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
 		$this->layout->nest('content', 'usuario.registro');	
@@ -39,11 +31,7 @@ class UserController extends \BaseController {
 	}
 
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+	
 	public function store()
 	{
 		$name = Input::get('name');
@@ -51,19 +39,49 @@ class UserController extends \BaseController {
 		$last_Name2 = Input::get('last_Name2');
 		$email = Input::get('email');
 		$password = Input::get('password');
-		$password = Hash::make($password);
 		$confirmation = Input::get('confirmation');
-		$user = new User();
-		$user->name = $name;
-		$user->last_name1 = $last_Name1;
-		$user->last_name2 = $last_Name2;
-		$user->email = $email;
-		$user->password = $password;
-		$user->save();
-		Auth::attempt(array('email' => $email, 'password' => $password));
-		return Redirect::to('tasks');
-	}
+		$datos=Input::all();
+		$reglas=array(
 
+			'name'=>'required|alpha',
+			'last_Name1'=>'required|alpha',
+			'last_Name2'=>'required|alpha',
+			'email'=>"required|Email|unique:users,email",
+			);
+		$mensajes=array("required"=>"The :attribute is required",
+						"alpha"=>":attribute Only letters",
+						"Email"=>":attribute required email",
+						"unique"=>"The :attribute already exists " 
+
+
+			);
+		$validator=Validator::make($datos,$reglas,$mensajes);
+
+		if ($validator->fails()) {
+			
+				return Redirect::to('registro')
+                ->withErrors($validator) // send back all errors to the login form
+                ->withInput();
+
+		}elseif ($password==$confirmation) {
+			
+			$password = Hash::make($password);
+			$user = new User();
+			$user->name = $name;
+			$user->last_name1 = $last_Name1;
+			$user->last_name2 = $last_Name2;
+			$user->email = $email;
+			$user->password = $password;
+			$user->save();
+			Auth::attempt(array('email' => $email, 'password' => $password));
+			return Redirect::to('tasks');
+		}else{
+				return Redirect::to('registro')->withInput()->withErrors(array('invalid_credentials' => ' Not match the password '));
+
+			}
+}
+
+	
 	public function logout()
     {
         Auth::logout();

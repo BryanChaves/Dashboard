@@ -1,5 +1,16 @@
 <h1>Register</h1>
 
+
+@if ($errors->has())
+    <div class="alert-danger text-center" role="alert">
+        <small>{{ $errors->first('name') }}</small>
+        <small>{{ $errors->first('last_Name1') }}</small>
+        <small>{{ $errors->first('last_Name2') }}</small>
+        <small>{{ $errors->first('email') }}</small>
+        <small>{{ $errors->first('invalid_credentials') }}</small>
+    </div>
+@endif
+
 {{ Form::open(array('url' => 'registro')) }}
 	<label for="name">Name:</label>
 	{{Form::text('name', Input::old('Name'), array('placeholder' => ' Name ', 'required' => 'true'))}}
