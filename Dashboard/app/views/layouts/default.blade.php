@@ -24,7 +24,7 @@
 			$apellido1=Auth::user()->last_name1;
 			$apellido2=Auth::user()->last_name2;
 			$nombreCompleto=$nombre." ".$apellido1." ".$apellido2;
-			echo("<h3>Bienvenido:".$nombreCompleto."</h3>");
+			echo("<h3>Bienvenido:". " ".$nombreCompleto."</h3>");
 		}
 	?>
 	{{ $content }}
